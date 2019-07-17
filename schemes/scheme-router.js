@@ -66,10 +66,12 @@ router.post('/:id/steps', async (req, res) => {
     if (scheme) {
       const step = await Schemes.addStep(stepData, id);
       res.status(201).json(step);
+      console.log(step)
     } else {
       res.status(404).json({ message: 'Could not find scheme with given id.' })
     }
   } catch (err) {
+    console.log(err)
     res.status(500).json({ message: 'Failed to create new step' });
   }
 });
@@ -88,6 +90,7 @@ router.put('/:id', async (req, res) => {
       res.status(404).json({ message: 'Could not find scheme with given id' });
     }
   } catch (err) {
+    console.log(err)
     res.status(500).json({ message: 'Failed to update scheme' });
   }
 });
